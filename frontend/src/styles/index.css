@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Surfaces */
+  --color-canvas: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f3f2;
+  --color-border: #e3e7e5;
+
+  /* Text */
+  --color-ink: #1f2624;
+  --color-ink-muted: #5b6663;
+  --color-ink-subtle: #8a938f;
+
+  /* Brand — deep emerald */
+  --color-primary: #0f6e51;
+  --color-primary-hover: #0c5a42;
+  --color-primary-active: #094531;
+  --color-primary-soft: #e6f2ec;
+  --color-primary-soft-text: #0c5a42;
+
+  /* Status */
+  --color-success: #15803d;
+  --color-success-soft: #dcfce7;
+  --color-success-soft-text: #166534;
+
+  --color-warning: #b45309;
+  --color-warning-soft: #fef3c7;
+  --color-warning-soft-text: #92400e;
+
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fee2e2;
+  --color-danger-soft-text: #991b1b;
+
+  --color-info: #1d4ed8;
+  --color-info-soft: #dbeafe;
+  --color-info-soft-text: #1e40af;
+}
+
+.dark {
+  --color-canvas: #0e1412;
+  --color-surface: #161d1a;
+  --color-surface-alt: #1d2521;
+  --color-border: #2a332e;
+
+  --color-ink: #edf1ef;
+  --color-ink-muted: #a9b3ae;
+  --color-ink-subtle: #78837e;
+
+  --color-primary: #34c38f;
+  --color-primary-hover: #3ed89f;
+  --color-primary-active: #2aae7c;
+  --color-primary-soft: #16332a;
+  --color-primary-soft-text: #6ee7b7;
+
+  --color-success: #34d399;
+  --color-success-soft: rgba(16, 185, 129, 0.16);
+  --color-success-soft-text: #6ee7b7;
+
+  --color-warning: #fbbf24;
+  --color-warning-soft: rgba(217, 119, 6, 0.18);
+  --color-warning-soft-text: #fcd34d;
+
+  --color-danger: #f87171;
+  --color-danger-soft: rgba(220, 38, 38, 0.18);
+  --color-danger-soft-text: #fca5a5;
+
+  --color-info: #60a5fa;
+  --color-info-soft: rgba(37, 99, 235, 0.18);
+  --color-info-soft-text: #93c5fd;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-soft-text);
+  }
+  * {
+    border-color: var(--color-border);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 9999px;
+  }
+}
+
+/* Printable documents (receipts, invoices, reports) */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print-root,
+  #print-root * {
+    visibility: visible;
+  }
+  #print-root {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    color: #000;
+    /* Force light-theme tokens for this subtree so pages that print their
+       live (CSS-variable-driven) content — not just the hardcoded-color
+       Receipt component — stay legible even when printed from dark mode. */
+    --color-canvas: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-alt: #f3f4f6;
+    --color-border: #d1d5db;
+    --color-ink: #000000;
+    --color-ink-muted: #374151;
+    --color-ink-subtle: #6b7280;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

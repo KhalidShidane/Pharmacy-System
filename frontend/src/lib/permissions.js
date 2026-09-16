@@ -1,0 +1,25 @@
+// Mirrors backend/src/config/permissions.js — the backend is the source of
+// truth for enforcement, this just lets the frontend gate nav/UI the same way.
+export const PERMISSIONS = {
+  MEDICINE_VIEW: 'medicine.view',
+  MEDICINE_MANAGE: 'medicine.manage',
+  BATCH_VIEW: 'batch.view',
+  BATCH_MANAGE: 'batch.manage',
+  INVENTORY_VIEW: 'inventory.view',
+  INVENTORY_ADJUST: 'inventory.adjust',
+  CUSTOMER_VIEW: 'customer.view',
+  CUSTOMER_MANAGE: 'customer.manage',
+  SALE_CREATE: 'sale.create',
+  SALE_VIEW: 'sale.view',
+  DASHBOARD_VIEW: 'dashboard.view',
+  USER_MANAGE: 'user.manage',
+  SETTINGS_MANAGE: 'settings.manage',
+  SUPPLIER_VIEW: 'supplier.view',
+  SUPPLIER_MANAGE: 'supplier.manage',
+  PURCHASE_VIEW: 'purchase.view',
+  PURCHASE_MANAGE: 'purchase.manage',
+  EXPENSE_VIEW: 'expense.view',
+  EXPENSE_MANAGE: 'expense.manage',
+  REPORTS_VIEW: 'reports.view',
+  PROFILE_MANAGE: 'profile.manage',
+};
